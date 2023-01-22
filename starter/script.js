@@ -23,6 +23,7 @@ textField.append(saveBtn);
 // if val = current hour add class present
 // if val is > current hour add class future
 
+//Doesn't work
 function checkTime() {
     var currentTime = moment().format("HH");
     var scheduleTime = parseInt($("textarea").attr("id"));
@@ -31,7 +32,7 @@ function checkTime() {
     console.log(scheduleTime);
 
     // $("textarea").each(function() {
-        
+
     //     if (scheduleTime = currentTime) {
     //         $(this).addClass("present");
     //     } else if (scheduleTime < currentTime) {
@@ -39,24 +40,33 @@ function checkTime() {
     //     } else (scheduleTime > currentTime)
     //             $(this).addClass("future");
     // });
-    $("textarea").each(function() {
+    $("textarea").each(function () {
         if (scheduleTime < currentTime) {
             $(this).addClass("past");
         } else if (scheduleTime == currentTime) {
             $(this).addClass("present");
-        } else (scheduleTime > currentTime) 
-            $(this).addClass("future");
+        } else (scheduleTime > currentTime)
+        $(this).addClass("future");
     });
 
 };
 
 checkTime();
 
+//Doesn't work
 saveBtn.on("click", function (event) {
     event.preventDefault();
-   var toDo = $(".form-control");
-localStorage.setItem("toDo", toDo);
+    var toDo = $(".form-control").val();
+   localStorage.setItem("toDo", toDo);
 
-toDo.textContent = JSON.parse(localStorage.getItem("toDo")); 
+    // toDo.textContent = JSON.parse(localStorage.getItem("toDo"));
 });
 
+// $(".saveBtn").on("click", function () {
+//     // Get nearby values of the description in JQuery
+//     var text = $(this).siblings(".description").val();
+//     var time = $(this).parent().attr("id");
+
+//     // Save text in local storage
+//     localStorage.setItem(time, text);
+// })
