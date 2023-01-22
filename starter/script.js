@@ -39,3 +39,4 @@ $("#currentDay").text(today.format("dddd, Do MMM YYYY"));
 //add get & set JSON to add info to client side storage so info stays when page is refreshed
 
 //add colour coding for time block
+
