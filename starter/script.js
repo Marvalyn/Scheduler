@@ -3,11 +3,15 @@
 var today = moment();
 $("#currentDay").text(today.format("dddd, Do MMM YYYY"));
 
-//Addition of time blocks from 9-5
+//Addition of time blocks from 9-5 in html
 //each block has 3 columns for time, content and save button
 //add time blocks as text area with class off time-block
 
 //add a save button with class of saveBtn
+var textField = $(".input-group");
+var saveBtn = $('<button class="saveBtn"><i class="fas fa-save"></i></button>');
+// textField.append('<button class="saveBtn"><i class="fas fa-save"></i></button>');
+textField.append(saveBtn);
 //code below will be useful when coding save  button 
 // function handleFormSubmit(event) {
 //     event.preventDefault();
