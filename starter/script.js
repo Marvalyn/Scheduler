@@ -15,8 +15,13 @@ textField.append(saveBtn);
 
 //add get & set JSON to add info to client side storage so info stays when page is refreshed
 // localStorage.setItem("activity");
-//add colour coding for time block
 
+//add colour coding for time block
+// add variable current
+//  for each $span.val
+// if val is <current hour add class past
+// if val = current hour add class present
+// if val is > current hour add class future
 
 function checkTime() {
     var currentTime = moment().format("HH");
@@ -46,8 +51,12 @@ function checkTime() {
 };
 
 checkTime();
-// add variable current
-//  for each $span.val
-// if val is <current hour add class past
-// if val = current hour add class present
-// if val is > current hour add class future
+
+saveBtn.on("click", function (event) {
+    event.preventDefault();
+   var toDo = $(".form-control");
+localStorage.setItem("toDo", toDo);
+
+toDo.textContent = JSON.parse(localStorage.getItem("toDo")); 
+});
+
