@@ -41,6 +41,30 @@ textField.append(saveBtn);
 //   }
 
 //add get & set JSON to add info to client side storage so info stays when page is refreshed
-
+// localStorage.setItem("activity");
 //add colour coding for time block
 
+
+function checkTime() {
+    var currentTime = moment().format("HH:mm:ss");
+    var scheduleTime = $("textarea").attr("id");
+    console.log(currentTime);
+    console.log(scheduleTime);
+
+    $("textarea").each(function() {
+        if (scheduleTime = currentTime) {
+            $(this).addClass("present");
+        } else if (scheduleTime < currentTime) {
+            $(this).addClass("past");
+        } else (scheduleTime > currentTime) 
+                $(this).addClass("future");
+    });
+
+};
+
+checkTime();
+// add variable current
+//  for each $span.val
+// if val is <current hour add class past
+// if val = current hour add class present
+// if val is > current hour add class future
