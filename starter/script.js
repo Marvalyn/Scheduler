@@ -26,8 +26,8 @@ textField.append(saveBtn);
 //Doesn't work
 function checkTime() {
     var currentTime = moment().format("HH");
-    var scheduleTime = parseInt($("input").attr("id"));
-    // var scheduleTime = $("span").val();
+    // var scheduleTime = parseInt($("input").attr("id"));
+    var scheduleTime = parseInt($("input").attr("id").split("-")[1]);
     console.log(currentTime);
     console.log(scheduleTime);
 
@@ -44,13 +44,17 @@ function checkTime() {
         if (scheduleTime < currentTime) {
             $(this).addClass("past");
         } else if (scheduleTime == currentTime) {
+            $(this).removeClass("past");
             $(this).addClass("present");
-        } else (scheduleTime > currentTime)
+        } else 
+        $(this).removeClass("past");
+        $(this).removeClass("present");
         $(this).addClass("future");
     });
 
 };
 
+//(scheduleTime > currentTime)
 checkTime();
 
 //Doesn't work
