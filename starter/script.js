@@ -27,8 +27,8 @@ textField.append(saveBtn);
 function checkTime() {
     var currentTime = parseInt(moment().format("HH"));
     // var scheduleTime = parseInt($("input").attr("id"));
-    
-    
+
+
     // $("textarea").each(function() {
 
     //     if (scheduleTime = currentTime) {
@@ -41,8 +41,8 @@ function checkTime() {
     $("input").each(function () {
         // console.log(this);
         var scheduleTime = parseInt($(this).attr("id").split("-")[1]);
-    //     console.log(currentTime);
-    // console.log(scheduleTime);
+        //     console.log(currentTime);
+        // console.log(scheduleTime);
         if (scheduleTime < currentTime) {
             $(this).addClass("past");
             $(this).removeClass("future");
@@ -52,9 +52,9 @@ function checkTime() {
             $(this).addClass("present");
             $(this).removeClass("future");
         } else {
-        $(this).removeClass("past");
-        $(this).removeClass("present");
-        $(this).addClass("future");
+            $(this).removeClass("past");
+            $(this).removeClass("present");
+            $(this).addClass("future");
         }
     });
 
@@ -64,32 +64,25 @@ function checkTime() {
 checkTime();
 
 $(".saveBtn").each(function () {
-console.log(this);
-$(this).on("click", function (event) {
-    event.preventDefault();
-    var toDo = $(this).siblings("input").val();
-    var hourID = $(this).siblings("input").attr("id").split("-")[1];
-   localStorage.setItem(hourID, toDo);
-   localStorage.getItem(toDo);
-    // toDo.textContent = JSON.parse(localStorage.getItem("toDo"));
+    console.log(this);
+    $(this).on("click", function (event) {
+        event.preventDefault();
+        var toDo = $(this).siblings("input").val();
+        var hourID = $(this).siblings("input").attr("id").split("-")[1];
+        // var scheduleItem = localStorage.getItem(hourID);
+
+        localStorage.setItem(hourID, toDo);
+    });
+
 });
-});
 
-//Doesn't work
+function renderPlans() {
+    // hours to account for: 1, 2, 3, 4, 5, 9, 10, 11, 12
+    // starts at 1 because 1 is the lowest hour
+    for (var i = 9; i <= 18; i++) {
+        // select the 
+        $("#-" + i).val(localStorage.getItem(i));
+    }
+}
 
-//Regarding local storage -- get item -- if you applied local storage set item 
-//-- you will see each hour listed individually within your application local storage.  to get it, you will need to code for each hour.
-// $(".saveBtn").on("click", function () {
-//     // Get nearby values of the description in JQuery
-//     var text = $(this).siblings(".description").val();
-//     var time = $(this).parent().attr("id");
-
-//     // Save text in local storage
-//     localStorage.setItem(time, text);
-// })
-
-//Now, you calling out check time 
-// -- but when the app deploys, it only runs this app once... 
-// in order to run this function numerous times, like every 15 seconds, you will want to consider applying a timer to the function 
-// -- look up functions in w3 schools.  
-// You just need to declare a variable to define the timer applied to the function.
+renderPlans();
