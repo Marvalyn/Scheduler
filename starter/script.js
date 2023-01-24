@@ -79,7 +79,7 @@ $(".saveBtn").each(function () {
 function renderPlans() {
     // hours to account for: 1, 2, 3, 4, 5, 9, 10, 11, 12
     // starts at 1 because 1 is the lowest hour
-    for (var i = 9; i <= 18; i++) {
+    for (var i = 8; i <= 18; i++) {
         // select the 
         $("#-" + i).val(localStorage.getItem(i));
     }

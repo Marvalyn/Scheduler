@@ -23,7 +23,7 @@ The webpage can be accessed using any web browser on any device (desktop, laptop
 
 ## Usage
 
-This webpage can be accessed at https://marvalyn.github.io/Scheduler/ the homescreen looks as follows; ![Scheduler](./starter/Screenshot%202023-01-24%20at%2016.56.51.png|).
+This webpage can be accessed at https://marvalyn.github.io/Scheduler/ the homescreen looks as follows; ![Scheduler](./starter/Screenshot%202023-01-24%20at%2016.56.51.png).
 
 ## Credits
 
