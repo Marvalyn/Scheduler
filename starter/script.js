@@ -39,10 +39,10 @@ function checkTime() {
     //             $(this).addClass("future");
     // });
     $("input").each(function () {
-        console.log(this);
+        // console.log(this);
         var scheduleTime = parseInt($(this).attr("id").split("-")[1]);
-        console.log(currentTime);
-    console.log(scheduleTime);
+    //     console.log(currentTime);
+    // console.log(scheduleTime);
         if (scheduleTime < currentTime) {
             $(this).addClass("past");
             $(this).removeClass("future");
@@ -63,14 +63,20 @@ function checkTime() {
 //(scheduleTime > currentTime)
 checkTime();
 
-//Doesn't work
-saveBtn.on("click", function (event) {
+$(".saveBtn").each(function () {
+console.log(this);
+$(this).on("click", function (event) {
     event.preventDefault();
-    var toDo = $(".form-control").val();
-   localStorage.setItem("toDo", toDo);
-
+    var toDo = $(this).siblings("input").val();
+    var hourID = $(this).siblings("input").attr("id").split("-")[1];
+   localStorage.setItem(hourID, toDo);
+   localStorage.getItem(toDo);
     // toDo.textContent = JSON.parse(localStorage.getItem("toDo"));
 });
+});
+
+//Doesn't work
+
 //Regarding local storage -- get item -- if you applied local storage set item 
 //-- you will see each hour listed individually within your application local storage.  to get it, you will need to code for each hour.
 // $(".saveBtn").on("click", function () {
