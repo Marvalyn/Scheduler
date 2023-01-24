@@ -25,12 +25,10 @@ textField.append(saveBtn);
 
 //Doesn't work
 function checkTime() {
-    var currentTime = moment().format("HH");
+    var currentTime = parseInt(moment().format("HH"));
     // var scheduleTime = parseInt($("input").attr("id"));
-    var scheduleTime = parseInt($("input").attr("id").split("-")[1]);
-    console.log(currentTime);
-    console.log(scheduleTime);
-
+    
+    
     // $("textarea").each(function() {
 
     //     if (scheduleTime = currentTime) {
@@ -41,15 +39,23 @@ function checkTime() {
     //             $(this).addClass("future");
     // });
     $("input").each(function () {
+        console.log(this);
+        var scheduleTime = parseInt($(this).attr("id").split("-")[1]);
+        console.log(currentTime);
+    console.log(scheduleTime);
         if (scheduleTime < currentTime) {
             $(this).addClass("past");
+            $(this).removeClass("future");
+            $(this).removeClass("present");
         } else if (scheduleTime == currentTime) {
             $(this).removeClass("past");
             $(this).addClass("present");
-        } else 
+            $(this).removeClass("future");
+        } else {
         $(this).removeClass("past");
         $(this).removeClass("present");
         $(this).addClass("future");
+        }
     });
 
 };
@@ -65,7 +71,8 @@ saveBtn.on("click", function (event) {
 
     // toDo.textContent = JSON.parse(localStorage.getItem("toDo"));
 });
-
+//Regarding local storage -- get item -- if you applied local storage set item 
+//-- you will see each hour listed individually within your application local storage.  to get it, you will need to code for each hour.
 // $(".saveBtn").on("click", function () {
 //     // Get nearby values of the description in JQuery
 //     var text = $(this).siblings(".description").val();
@@ -74,3 +81,9 @@ saveBtn.on("click", function (event) {
 //     // Save text in local storage
 //     localStorage.setItem(time, text);
 // })
+
+//Now, you calling out check time 
+// -- but when the app deploys, it only runs this app once... 
+// in order to run this function numerous times, like every 15 seconds, you will want to consider applying a timer to the function 
+// -- look up functions in w3 schools.  
+// You just need to declare a variable to define the timer applied to the function.
